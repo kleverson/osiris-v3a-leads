@@ -24,7 +24,7 @@ const PageRegister = () => {
       body: JSON.stringify(data),
     });
 
-    const json = await res.json();
+    await res.json();
 
     if (!res.ok) {
       console.log("[error]", res);
