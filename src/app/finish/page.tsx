@@ -9,10 +9,10 @@ const PageFinish = () => {
 
   return (
     <>
-      <div className="wrapper max-h-screen flex flex-col justify-between min-h-screen bg-[#A5A1DD]">
+      <div className="wrapper max-h-screen flex flex-col justify-between bg-[#A5A1DD]">
         <div className="flex items-center justify-center gap-16 w-full flex-1 flex-col">
-          <main className="flex flex-col row-start-2 items-center sm:items-start w-1/2">
-            <h2 className="font-extrabold text-[56px] text-[#0033A4] mb-4 leading-none">
+          <main className="flex flex-col row-start-2 items-center sm:items-start  w-4/5 md:w-2/3">
+            <h2 className="text-2xl md:text-[56px]  text-[#0033A4] mb-4 leading-none font-['BancoDoBrasilTitle'] font-extrabold">
               Agradecemos sua participação.
             </h2>
             <p className="text-2xl text-[#3C3C3C] font-light">

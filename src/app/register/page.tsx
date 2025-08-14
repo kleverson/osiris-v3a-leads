@@ -11,14 +11,15 @@ import { useState } from "react";
 const PageRegister = () => {
   const router = useRouter();
 
-  const [checked, setChecked] = useState(false);
-
   const {
     control,
     register,
     handleSubmit,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<Payload>();
+
+  const acceptValue = watch("accept", false);
 
   const onSubmit = async (data: Payload) => {
     console.log(data);
@@ -49,18 +50,18 @@ const PageRegister = () => {
   return (
     <div className="wrapper max-h-screen flex flex-col justify-between min-h-screen">
       <div className="flex items-center justify-center gap-16 w-full flex-1">
-        <main className="flex flex-col row-start-2 items-center sm:items-start w-1/2">
-          <h2 className="font-bold text-[56px] text-[#F1EA3C] mb-4 leading-none">
+        <main className="flex flex-col row-start-2 items-center sm:items-start w-4/5 md:w-2/3">
+          <h2 className="text-2xl md:text-[56px] text-[#F1EA3C] mb-4 leading-none font-['BancoDoBrasilTitle'] font-extrabold">
             Precisamos de algumas informações
           </h2>
-          <p className="text-2xl text-white font-light">
+          <p className="text-base md:text-2xl text-white font-light">
             Nos ajude a saber mais sobre você.
           </p>
 
-          <div className="my-10 bg-[#9AD6D3] rounded-3xl p-[60px] w-full">
+          <div className="my-8 md:my-10 bg-[#9AD6D3] rounded-3xl md:p-[60px] p-6 w-full">
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="flex flex-col gap-4"
+              className="flex flex-col gap-3 md:gap-4"
             >
               <div className="flex">
                 <div className="field flex-1">
@@ -98,7 +99,7 @@ const PageRegister = () => {
                 />
                 {errors.name && <FormError message={errors.name.message} />}
               </div>
-              <div className="flex justify-between gap-4">
+              <div className="flex justify-between flex-col md:flex-row md:gap-3 gap-4">
                 <div className="flex-1 field">
                   <input
                     placeholder="Email"
@@ -149,9 +150,8 @@ const PageRegister = () => {
                     {...register("accept", {
                       required: "Você precisa aceitar para continuar",
                     })}
-                    onChange={(e) => setChecked(e.currentTarget.checked)}
                   />
-                  <span className="w-5 h-5 rounded-sm flex items-center justify-center transition-colors duration-200">
+                  <span className="w-5 h-5 rounded-sm flex items-start md:items-center justify-center transition-colors duration-200">
                     <svg
                       width="20"
                       height="21"
@@ -159,7 +159,7 @@ const PageRegister = () => {
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
-                      {checked && (
+                      {acceptValue && (
                         <path
                           d="M5.83337 10.9167L8.33337 13.4167L14.1667 7.58333"
                           stroke="#42489D"

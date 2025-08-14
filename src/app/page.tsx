@@ -10,11 +10,11 @@ export default function Home() {
   return (
     <div className="wrapper max-h-screen flex flex-col justify-between min-h-screen">
       <div className="flex items-center justify-center gap-16 w-full flex-1">
-        <main className="flex flex-col row-start-2 items-center sm:items-start w-1/2">
-          <h2 className="font-bold text-8xl text-[#F1EA3C] mb-4 leading-none">
+        <main className="flex flex-col row-start-2 items-center sm:items-start w-2/3">
+          <h2 className="text-4xl md:text-8xl text-[#F1EA3C] mb-2 leading-none font-['BancoDoBrasilTitle'] font-extrabold">
             Queremos te conhecer melhor
           </h2>
-          <p className="text-2xl text-white font-light">
+          <p className="text-base md:text-2xl text-white font-light">
             Fale um pouco sobre você e receba novidades que realmente importam.
           </p>
         </main>
