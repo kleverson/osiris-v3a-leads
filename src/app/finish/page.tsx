@@ -1,25 +1,105 @@
+"use client";
 import Link from "next/link";
+import Image from "next/image";
+import Button from "../components/Button";
+import { useRouter } from "next/navigation";
 
 const PageFinish = () => {
+  const router = useRouter();
+
   return (
-    <div className="h-screen w-screen">
-      <div className="flex flex-col items-center justify-center gap-5 h-full">
-        <div className="text-center">
-          <div className="flex flex-col gap-5">
-            <h3 className="font-bold text-4xl">Obrigado</h3>
-            <p>Obrigado pela sua inscrição, fique ligado!</p>
-            <div className="flex justify-center">
-              <Link
-                href="/register"
-                className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-              >
-                Xpto cta teste
-              </Link>
-            </div>
+    <>
+      <div className="wrapper max-h-screen flex flex-col justify-between min-h-screen bg-[#A5A1DD]">
+        <div className="flex items-center justify-center gap-16 w-full flex-1 flex-col">
+          <main className="flex flex-col row-start-2 items-center sm:items-start w-1/2">
+            <h2 className="font-extrabold text-[56px] text-[#0033A4] mb-4 leading-none">
+              Agradecemos sua participação.
+            </h2>
+            <p className="text-2xl text-[#3C3C3C] font-light">
+              <strong className="font-bold">Acompanhe a BB Seguros</strong> nas
+              redes sociais e não perca nenhuma novidade.
+            </p>
+          </main>
+
+          <div className="hidden grid-cols-3 md:grid gap-9">
+            <a href="" className="flex items-center">
+              <div className="icon bg-[#0033a4] rounded-full p-2">
+                <img src="/img/instagram.svg" alt="" />
+              </div>
+              <div className="bg-[#0033a4] rounded-lg p-2">
+                <div className="bg-white p-4">
+                  <img src="/img/qr_instagram.png" alt="" />
+                </div>
+              </div>
+            </a>
+            <a href="" className="flex items-center">
+              <div className="icon bg-[#0033a4] rounded-full p-2">
+                <img src="/img/facebook.svg" alt="" />
+              </div>
+              <div className="bg-[#0033a4] rounded-lg p-2">
+                <div className="bg-white p-4">
+                  <img src="/img/qr_facebook.png" alt="" />
+                </div>
+              </div>
+            </a>
+            <a href="" className="flex items-center">
+              <div className="icon bg-[#0033a4] rounded-full p-2">
+                <img src="/img/linkedin.svg" alt="" />
+              </div>
+              <div className="bg-[#0033a4] rounded-lg p-2">
+                <div className="bg-white p-4">
+                  <img src="/img/qr_linkedin.png" alt="" />
+                </div>
+              </div>
+            </a>
+            <a href="" className="flex items-center">
+              <div className="icon bg-[#0033a4] rounded-full p-2">
+                <img src="/img/youtube.svg" alt="" />
+              </div>
+              <div className="bg-[#0033a4] rounded-lg p-2">
+                <div className="bg-white p-4">
+                  <img src="/img/qr_youtube.png" alt="" />
+                </div>
+              </div>
+            </a>
+            <a href="" className="flex items-center">
+              <div className="icon bg-[#0033a4] rounded-full p-2">
+                <img src="/img/tiktok.svg" alt="" />
+              </div>
+              <div className="bg-[#0033a4] rounded-lg p-2">
+                <div className="bg-white p-4">
+                  <img src="/img/qr_tiktok.png" alt="" />
+                </div>
+              </div>
+            </a>
+            <a href="" className="flex items-center">
+              <div className="icon bg-[#0033a4] rounded-full p-2">
+                <img src="/img/pinterest.svg" alt="" />
+              </div>
+              <div className="bg-[#0033a4] rounded-lg p-2">
+                <div className="bg-white p-4">
+                  <img src="/img/qr_pinterest.png" alt="" />
+                </div>
+              </div>
+            </a>
           </div>
         </div>
+        <div className="flex justify-center items-center w-full">
+          <Image
+            src={"/img/grafism.png"}
+            width={719}
+            height={490}
+            alt={"grafismo"}
+          />
+        </div>
+        <Button
+          text={"INÍCIO"}
+          onClick={() => router.push("/")}
+          theme="blue"
+          sideArrow="left"
+        />
       </div>
-    </div>
+    </>
   );
 };
 

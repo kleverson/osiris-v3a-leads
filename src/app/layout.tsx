@@ -24,8 +24,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${openSans.variable} ${OpenMono.variable} antialiased`}>
-        <div className="bg-blue-500">{children}</div>
+      <body>
+        <div className="bg-[#42489D] min-h-screen">{children}</div>
       </body>
     </html>
   );
