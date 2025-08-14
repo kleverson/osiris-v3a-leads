@@ -12,7 +12,7 @@ type Props = {
 const Button = ({ isLoading, theme, text, onClick, sideArrow }: Props) => {
   return (
     <button
-      className={`w-full py-8 uppercase flex justify-center items-center gap-[6px] font-bold cursor-pointer ${
+      className={`w-full py-4 md:py-8 uppercase flex justify-center items-center gap-[6px] font-bold cursor-pointer ${
         theme === "yellow"
           ? "bg-[#F1EA3C] text-[#42489D]"
           : "bg-[#0033A4] text-[#EFE8A4]"

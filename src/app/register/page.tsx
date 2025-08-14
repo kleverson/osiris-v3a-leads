@@ -7,9 +7,12 @@ import { IMaskInput } from "react-imask";
 import { useRouter } from "next/navigation";
 import Button from "../components/Button";
 import { useState } from "react";
+import Terms from "../components/Terms";
 
 const PageRegister = () => {
   const router = useRouter();
+
+  const [showTerms, setShowTerms] = useState(false);
 
   const {
     control,
@@ -41,159 +44,195 @@ const PageRegister = () => {
 
   const FormError = ({ message }: { message?: string }) => {
     return (
-      <p className="mt-2 text-sm text-red-600 dark:text-red-500">
+      <p className="mt-2 text-sm text-[#F06881] dark:text-[#F06881]">
         <span className="font-medium">Oops!</span> {message}!
       </p>
     );
   };
 
   return (
-    <div className="wrapper max-h-screen flex flex-col justify-between min-h-screen">
-      <div className="flex items-center justify-center gap-16 w-full flex-1">
-        <main className="flex flex-col row-start-2 items-center sm:items-start w-4/5 md:w-2/3">
-          <h2 className="text-2xl md:text-[56px] text-[#F1EA3C] mb-4 leading-none font-['BancoDoBrasilTitle'] font-extrabold">
-            Precisamos de algumas informações
-          </h2>
-          <p className="text-base md:text-2xl text-white font-light">
-            Nos ajude a saber mais sobre você.
-          </p>
+    <>
+      <Terms open={showTerms} onDismiss={() => setShowTerms(false)} />
+      <div className="wrapper  flex flex-col justify-between">
+        <div className="flex items-center justify-center gap-16 w-full flex-1">
+          <main className="flex flex-col row-start-2 pt-6 md:pt-[70px] items-start sm:items-start px-6 md:px-20">
+            <h2 className="text-2xl md:text-[56px] text-[#F1EA3C] mb-2.5 md:mb-4 leading-none font-['BancoDoBrasilTitle'] font-extrabold">
+              Precisamos de algumas informações
+            </h2>
+            <p className="text-base md:text-2xl text-white font-light">
+              Nos ajude a saber mais sobre você.
+            </p>
 
-          <div className="my-8 md:my-10 bg-[#9AD6D3] rounded-3xl md:p-[60px] p-6 w-full">
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className="flex flex-col gap-3 md:gap-4"
-            >
-              <div className="flex">
-                <div className="field flex-1">
-                  <Controller
-                    name="document"
-                    control={control}
-                    rules={{
-                      required: "O CPF é obrigatório",
-                      validate: (value) =>
-                        validateDocument(value) || "CPF inválido",
-                    }}
-                    render={({ field }) => (
-                      <IMaskInput
-                        {...field}
-                        mask="000.000.000-00"
-                        className="bg-white p-4 rounded-2xl border-b border-b-[#42489D] text-[#3C3C3C] text-base w-full"
-                        placeholder="CPF"
-                        onAccept={(value: string) => field.onChange(value)}
-                      />
+            <div className="my-8 md:my-10 bg-[#9AD6D3] rounded-3xl md:p-[60px] p-6 w-full">
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="flex flex-col gap-3 md:gap-4"
+              >
+                <div className="flex">
+                  <div className="field flex-1">
+                    <Controller
+                      name="document"
+                      control={control}
+                      rules={{
+                        required: "O CPF é obrigatório",
+                        validate: (value) =>
+                          validateDocument(value) || "CPF inválido",
+                      }}
+                      render={({ field }) => (
+                        <IMaskInput
+                          {...field}
+                          mask="000.000.000-00"
+                          className={`bg-white p-4 rounded-2xl border-b border-b-[#42489D] text-[#3C3C3C] text-base w-full ${
+                            errors?.document?.message
+                              ? "placeholder-[#F06881]"
+                              : ""
+                          }`}
+                          placeholder="CPF"
+                          onAccept={(value: string) => field.onChange(value)}
+                        />
+                      )}
+                    />
+                    {errors.document && (
+                      <FormError message={errors.document.message} />
                     )}
-                  />
-                  {errors.document && (
-                    <FormError message={errors.document.message} />
-                  )}
+                  </div>
                 </div>
-              </div>
-              <div className="field">
-                <input
-                  placeholder="Nome"
-                  className="bg-white p-4 rounded-2xl border-b border-b-[#42489D] text-[#3C3C3C] text-base w-full"
-                  {...register("name", {
-                    required: "O nome é obrigatório",
-                    minLength: { value: 2, message: "Mínimo 2 caracteres" },
-                  })}
-                />
-                {errors.name && <FormError message={errors.name.message} />}
-              </div>
-              <div className="flex justify-between flex-col md:flex-row md:gap-3 gap-4">
-                <div className="flex-1 field">
-                  <input
-                    placeholder="Email"
-                    className="bg-white p-4 rounded-2xl border-b border-b-[#42489D] text-[#3C3C3C] text-base w-full"
-                    type="email"
-                    {...register("email", {
-                      required: "O e-mail é obrigatório",
-                      pattern: {
-                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                        message: "Formato de e-mail inválido",
-                      },
-                    })}
-                  />
-                  {errors.email && <FormError message={errors.email.message} />}
-                </div>
-
                 <div className="field">
-                  <Controller
-                    name="phone"
-                    control={control}
-                    rules={{
-                      required: "O telefone é obrigatório",
-                      minLength: { value: 14, message: "Telefone inválido" },
-                    }}
-                    render={({ field }) => (
-                      <IMaskInput
-                        {...field}
-                        className="bg-white p-4 rounded-2xl border-b border-b-[#42489D] text-[#3C3C3C] text-base w-full"
-                        mask="(00) 00000-0000"
-                        placeholder="Telefone"
-                        onAccept={(value: string) => field.onChange(value)}
-                      />
-                    )}
-                  />
-                  {errors.phone && <FormError message={errors.phone.message} />}
-                </div>
-              </div>
-
-              <div className="my-4">
-                <label
-                  htmlFor="accept"
-                  className="text-[#3C3C3C] text-base font-normal flex items-center gap-2 cursor-pointer select-none"
-                >
                   <input
-                    type="checkbox"
-                    id="accept"
-                    className="hidden peer"
-                    {...register("accept", {
-                      required: "Você precisa aceitar para continuar",
+                    placeholder="Nome"
+                    className={`bg-white p-4 rounded-2xl border-b border-b-[#42489D] text-[#3C3C3C] text-base w-full ${
+                      errors?.name?.message ? "placeholder-[#F06881]" : ""
+                    }`}
+                    {...register("name", {
+                      required: "O nome é obrigatório",
+                      minLength: { value: 2, message: "Mínimo 2 caracteres" },
                     })}
                   />
-                  <span className="w-5 h-5 rounded-sm flex items-start md:items-center justify-center transition-colors duration-200">
-                    <svg
-                      width="20"
-                      height="21"
-                      viewBox="0 0 20 21"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      {acceptValue && (
+                  {errors.name && <FormError message={errors.name.message} />}
+                </div>
+                <div className="flex justify-between flex-col md:flex-row md:gap-3 gap-4">
+                  <div className="flex-1 field">
+                    <input
+                      placeholder="Email"
+                      className={`bg-white p-4 rounded-2xl border-b border-b-[#42489D] text-[#3C3C3C] text-base w-full ${
+                        errors?.email?.message ? "placeholder-[#F06881]" : ""
+                      }`}
+                      type="email"
+                      {...register("email", {
+                        required: "O e-mail é obrigatório",
+                        pattern: {
+                          value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                          message: "Formato de e-mail inválido",
+                        },
+                      })}
+                    />
+                    {errors.email && (
+                      <FormError message={errors.email.message} />
+                    )}
+                  </div>
+
+                  <div className="field">
+                    <Controller
+                      name="phone"
+                      control={control}
+                      rules={{
+                        required: "O telefone é obrigatório",
+                        minLength: { value: 14, message: "Telefone inválido" },
+                      }}
+                      render={({ field }) => (
+                        <IMaskInput
+                          {...field}
+                          className={`bg-white p-4 rounded-2xl border-b border-b-[#42489D] text-[#3C3C3C] text-base w-full ${
+                            errors?.phone?.message
+                              ? "placeholder-[#F06881]"
+                              : ""
+                          }`}
+                          mask="(00) 00000-0000"
+                          placeholder="Telefone"
+                          onAccept={(value: string) => field.onChange(value)}
+                        />
+                      )}
+                    />
+                    {errors.phone && (
+                      <FormError message={errors.phone.message} />
+                    )}
+                  </div>
+                </div>
+
+                <div className="my-4">
+                  <label
+                    htmlFor="accept"
+                    className={`text-[#3C3C3C] text-base font-normal flex items-center gap-2 cursor-pointer select-none ${
+                      errors?.accept?.message ? "placeholder-[#F06881]" : ""
+                    }`}
+                  >
+                    <input
+                      type="checkbox"
+                      id="accept"
+                      className="hidden peer"
+                      {...register("accept", {
+                        required: "Você precisa aceitar para continuar",
+                      })}
+                    />
+                    <span className="w-5 h-5 rounded-sm flex items-start md:items-center justify-center transition-colors duration-200">
+                      <svg
+                        width="20"
+                        height="21"
+                        viewBox="0 0 20 21"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        {acceptValue && (
+                          <path
+                            d="M5.83337 10.9167L8.33337 13.4167L14.1667 7.58333"
+                            stroke="#42489D"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        )}
                         <path
-                          d="M5.83337 10.9167L8.33337 13.4167L14.1667 7.58333"
+                          d="M9.99996 18.8333C14.6023 18.8333 18.3333 15.1023 18.3333 10.5C18.3333 5.89762 14.6023 2.16666 9.99996 2.16666C5.39758 2.16666 1.66663 5.89762 1.66663 10.5C1.66663 15.1023 5.39758 18.8333 9.99996 18.8333Z"
                           stroke="#42489D"
                           strokeWidth="1.5"
                           strokeLinecap="round"
                           strokeLinejoin="round"
                         />
-                      )}
-                      <path
-                        d="M9.99996 18.8333C14.6023 18.8333 18.3333 15.1023 18.3333 10.5C18.3333 5.89762 14.6023 2.16666 9.99996 2.16666C5.39758 2.16666 1.66663 5.89762 1.66663 10.5C1.66663 15.1023 5.39758 18.8333 9.99996 18.8333Z"
-                        stroke="#42489D"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-                  Quero receber atualizações, promoções e conteúdos exclusivos.
-                </label>
-                {errors.accept && <FormError message={errors.accept.message} />}
-              </div>
-            </form>
-          </div>
-        </main>
-      </div>
+                      </svg>
+                    </span>
+                    <p>
+                      <span>
+                        Concordo em receber atualizações, promoções e conteúdos
+                        exclusivos da BB Seguros, conforme os{" "}
+                      </span>
+                      <a
+                        className="underline text-[#42489D]"
+                        onClick={() => setShowTerms(true)}
+                      >
+                        termos de participação.
+                      </a>
+                    </p>
+                  </label>
+                  {errors.accept && (
+                    <FormError message={errors.accept.message} />
+                  )}
+                </div>
+              </form>
+            </div>
+          </main>
+        </div>
 
-      <Button
-        isLoading={isSubmitting}
-        text={isSubmitting ? "Enviando..." : "Enviar"}
-        onClick={handleSubmit(onSubmit)}
-        theme="yellow"
-        sideArrow="right"
-      />
-    </div>
+        <div className="absolute bottom-0 w-full">
+          <Button
+            isLoading={isSubmitting}
+            text={isSubmitting ? "Enviando..." : "Enviar"}
+            onClick={handleSubmit(onSubmit)}
+            theme="yellow"
+            sideArrow="right"
+          />
+        </div>
+      </div>
+    </>
   );
 };
 
