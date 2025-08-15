@@ -57,7 +57,7 @@ const PageRegister = () => {
                 open={showTerms}
                 onDismiss={() => setShowTerms(false)}
             />
-            <div className="wrapper  flex flex-col justify-between">
+            <div className="wrapper max-h-screen  flex flex-col justify-between">
                 <div className="flex items-center justify-center gap-16 w-full flex-1">
                     <main className="flex flex-col row-start-2 pt-2 md:pt-[70px] items-start sm:items-start px-6 md:px-20">
                         <h2 className="text-2xl md:text-[56px] text-[#F1EA3C] mb-[10px] md:mb-4 leading-none font-['BancoDoBrasilTitle'] font-extrabold">
@@ -266,7 +266,7 @@ const PageRegister = () => {
                     </main>
                 </div>
 
-                <div className="absolute bottom-0 w-full">
+                <div className="fixed bottom-0 w-full z-[99]">
                     <Button
                         isLoading={isSubmitting}
                         text={isSubmitting ? 'Enviando...' : 'Enviar'}

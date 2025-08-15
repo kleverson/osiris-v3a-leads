@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 export default function Home() {
     const router = useRouter();
     return (
-        <div className="wrapper max-h-screen flex flex-col justify-between min-h-[85vh]">
+        <div className="wrapper max-h-screen flex flex-col justify-between">
             <div className="flex items-start justify-start p-6 md:p-20 gap-16 w-full flex-1 pt-[50px]">
                 <main className="flex flex-col row-start-2 items-start sm:items-start w-4/5">
                     <h2 className="text-4xl md:text-7xl text-[#F1EA3C] mb-2 leading-none font-['BancoDoBrasilTitle'] font-extrabold">
@@ -18,7 +18,7 @@ export default function Home() {
                     </p>
                 </main>
             </div>
-            <div>
+            <div className="fixed bottom-0 w-full z-[99]">
                 <div className="mx-20 justify-end flex">
                     <img
                         src="/img/BEBESEG.png"

@@ -55,7 +55,7 @@ export default function LayoutContent({
                         />
                         <motion.img
                             src="/img/pimpao.png"
-                            className="absolute left-0 bottom-0 md:bottom-[60px] h-48 lg:h-[433px] transition-all"
+                            className="absolute left-0 bottom-[60px] md:bottom-[-60px] h-48 lg:h-[433px] transition-all"
                             alt=""
                             initial={{ opacity: 0, x: -50 }}
                             animate={{ opacity: 1, x: 0 }}
