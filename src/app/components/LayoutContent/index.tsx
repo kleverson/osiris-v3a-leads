@@ -40,27 +40,30 @@ export default function LayoutContent({
                     transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
                 />
             </div>
-            <div className="content relative z-20 flex-1">{children}</div>
-            {!isFinish && (
-                <>
-                    <motion.img
-                        src="/img/core.png"
-                        className="absolute right-0 top-[55%] translate-y-[-50%] w-[152px] lg:w-[333px] transition-all"
-                        alt=""
-                        initial={{ opacity: 0, x: 50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 1, delay: 0.4 }}
-                    />
-                    <motion.img
-                        src="/img/pimpao.png"
-                        className="absolute left-0 bottom-0 md:bottom-[60px] h-48 lg:h-[433px] transition-all"
-                        alt=""
-                        initial={{ opacity: 0, x: -50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 1, delay: 0.6 }}
-                    />{' '}
-                </>
-            )}
+            <div className="content relative z-20 flex-1">
+                {children}
+
+                {!isFinish && (
+                    <>
+                        <motion.img
+                            src="/img/core.png"
+                            className="absolute right-0 top-[55%] translate-y-[-50%] w-[152px] lg:w-[333px] transition-all"
+                            alt=""
+                            initial={{ opacity: 0, x: 50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 1, delay: 0.4 }}
+                        />
+                        <motion.img
+                            src="/img/pimpao.png"
+                            className="absolute left-0 bottom-0 md:bottom-[60px] h-48 lg:h-[433px] transition-all"
+                            alt=""
+                            initial={{ opacity: 0, x: -50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 1, delay: 0.6 }}
+                        />{' '}
+                    </>
+                )}
+            </div>
         </div>
     );
 }

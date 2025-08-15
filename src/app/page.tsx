@@ -19,13 +19,13 @@ export default function Home() {
                 </main>
             </div>
             <div className="absolute w-full bottom-0">
-                {/* <div className="mx-20 justify-end flex">
+                <div className="mx-20 justify-end flex">
                     <img
                         src="/img/BEBESEG.png"
-                        className="absolute right-6 md:right-[80px] translate-y-[-50%] w-[139px]  h-[27px] md:w-[230px] md:h-[40px] transition-all"
+                        className="absolute right-6 md:right-[80px] top-[-30px] translate-y-[-50%] w-[139px]  h-[27px] md:w-[230px] md:h-[40px] transition-all"
                         alt=""
                     />
-                </div> */}
+                </div>
                 <Button
                     text={'Cadastro'}
                     onClick={() => router.push('/register')}
