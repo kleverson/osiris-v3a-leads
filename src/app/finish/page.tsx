@@ -99,13 +99,8 @@ const PageFinish = () => {
                         ))}
                     </div>
                 </div>
-                <div className="flex justify-center items-end w-full md:bottom-[-60px]">
-                    <Image
-                        src={'/img/grafism.png'}
-                        width={719}
-                        height={490}
-                        alt={'grafismo'}
-                    />
+                <div className="flex justify-center items-end w-full absolute bottom-[60px]">
+                    <img src="/img/grafism.png" alt="grafism" />
                 </div>
             </div>
             <div className="fixed bottom-0 w-full">
