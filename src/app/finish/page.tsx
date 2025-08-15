@@ -12,17 +12,10 @@ const PageFinish = () => {
             <div className="wrapper h-[60vh] flex flex-col items-center justify-center">
                 <div className="flex w-full flex-col">
                     <main className="flex flex-col row-start-2 sm:items-start px-6 md:px-20">
-                        <h2 className="text-2xl md:text-[56px]  text-[#0033A4] mb-[10px] md:mb-4 leading-none font-['BancoDoBrasilTitle'] font-extrabold">
+                        <h2 className="text-2xl md:text-[56px]  text-[#0033A4] text-center mb-[10px] md:mb-4 leading-none font-['BancoDoBrasilTitle'] font-extrabold">
                             Agradecemos <br className="hidden md:block" /> a sua
                             participação.
                         </h2>
-                        <p className="text-base md:text-2xl text-[#3C3C3C] font-light">
-                            <strong className="font-bold">
-                                Acompanhe a BB Seguros
-                            </strong>{' '}
-                            nas redes sociais <br className="hidden md:block" />{' '}
-                            e não perca nenhuma novidade.
-                        </p>
                     </main>
                 </div>
                 <div className="flex justify-center items-end w-full absolute bottom-[60px]">
