@@ -25,12 +25,13 @@ const Terms = ({ open, onDismiss }: props) => {
       {show && (
         <div
           className={`bg-[rgba(0,0,0,0.5)] fixed h-screen w-screen top-0 left-0 py-6 px-2
-          transition-opacity duration-300 ease-in-out
+          transition-opacity duration-300 ease-in-out z-[9999]
           ${open ? "opacity-100" : "opacity-0"}`}
         >
-          <div className="flex justify-end items-end mb-5">
+          <div className="flex justify-end items-end mb-0 md:mb-5">
             <button onClick={onDismiss}>
               <svg
+                className="h-5 w-5"
                 width="48"
                 height="48"
                 viewBox="0 0 48 48"
@@ -65,12 +66,12 @@ const Terms = ({ open, onDismiss }: props) => {
               </svg>
             </button>
           </div>
-          <div className="bg-white rounded-3xl p-5 overflow-hidden mx-5">
+          <div className="bg-white rounded-3xl p-5 pb-6 overflow-hidden mx-5 max-h-[90vh]">
             <h2 className="text-[#42489D] font-extrabold text-base md:text-[22px] mb-5">
               Termos de participação
             </h2>
 
-            <div className="content text-[#3C3C3C] text-base overflow-y-scroll max-h-[600px]">
+            <div className="content text-[#3C3C3C] text-xs md:text-base overflow-y-scroll max-h-[600px]">
               <p className="mb-4 lg:mb-5">
                 A participação na presente ação caracteriza, por si, a aceitação
                 por parte dos consumidores participantes de todos os termos e

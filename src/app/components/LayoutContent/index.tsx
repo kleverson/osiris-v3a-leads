@@ -19,11 +19,7 @@ export default function LayoutContent({
         isFinish ? "bg-[#A5A1DD]" : "bg-[#42489D]"
       } min-h-screen relative flex flex-col justify-between overflow-hidden`}
     >
-      <div
-        className={`flex justify-end items-end px-10 gap-20 ${
-          isFinish ? "relative top-[40px]" : ""
-        }`}
-      >
+      <div className={`flex justify-end items-end px-10 gap-20`}>
         {!isFinish && (
           <motion.img
             src="/img/boca.png"
@@ -38,7 +34,7 @@ export default function LayoutContent({
         <motion.img
           src={isFinish ? "/img/coma_blue.png" : "/img/coma.png"}
           alt=""
-          className="lg:w-[140px] w-[56px]"
+          className="lg:w-[140px] w-[56px] relative top-6 md:top-[40px]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}

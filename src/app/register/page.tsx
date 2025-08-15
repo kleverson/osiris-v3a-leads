@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import Button from "../components/Button";
 import { useState } from "react";
 import Terms from "../components/Terms";
+import TermsPortal from "../components/Terms/TermsPortal";
 
 const PageRegister = () => {
   const router = useRouter();
@@ -44,7 +45,7 @@ const PageRegister = () => {
 
   const FormError = ({ message }: { message?: string }) => {
     return (
-      <p className="mt-2 text-sm text-[#F06881] dark:text-[#F06881]">
+      <p className="text-sm text-[#F06881] dark:text-[#F06881]">
         <span className="font-medium">Oops!</span> {message}!
       </p>
     );
@@ -52,18 +53,18 @@ const PageRegister = () => {
 
   return (
     <>
-      <Terms open={showTerms} onDismiss={() => setShowTerms(false)} />
+      <TermsPortal open={showTerms} onDismiss={() => setShowTerms(false)} />
       <div className="wrapper  flex flex-col justify-between">
         <div className="flex items-center justify-center gap-16 w-full flex-1">
-          <main className="flex flex-col row-start-2 pt-6 md:pt-[70px] items-start sm:items-start px-6 md:px-20">
-            <h2 className="text-2xl md:text-[56px] text-[#F1EA3C] mb-2.5 md:mb-4 leading-none font-['BancoDoBrasilTitle'] font-extrabold">
+          <main className="flex flex-col row-start-2 pt-2 md:pt-[70px] items-start sm:items-start px-6 md:px-20">
+            <h2 className="text-2xl md:text-[56px] text-[#F1EA3C] mb-[10px] md:mb-4 leading-none font-['BancoDoBrasilTitle'] font-extrabold">
               Precisamos de algumas informações
             </h2>
             <p className="text-base md:text-2xl text-white font-light">
               Nos ajude a saber mais sobre você.
             </p>
 
-            <div className="my-8 md:my-10 bg-[#9AD6D3] rounded-3xl md:p-[60px] p-6 w-full">
+            <div className="mt-5  md:my-10 bg-[#9AD6D3] rounded-3xl md:p-[60px] p-6 w-full">
               <form
                 onSubmit={handleSubmit(onSubmit)}
                 className="flex flex-col gap-3 md:gap-4"
@@ -82,7 +83,7 @@ const PageRegister = () => {
                         <IMaskInput
                           {...field}
                           mask="000.000.000-00"
-                          className={`bg-white p-4 rounded-2xl border-b border-b-[#42489D] text-[#3C3C3C] text-base w-full ${
+                          className={`bg-white p-[10px] md:p-4 rounded-2xl border-b border-b-[#42489D] text-[#3C3C3C] text-base w-full ${
                             errors?.document?.message
                               ? "placeholder-[#F06881]"
                               : ""
@@ -100,7 +101,7 @@ const PageRegister = () => {
                 <div className="field">
                   <input
                     placeholder="Nome"
-                    className={`bg-white p-4 rounded-2xl border-b border-b-[#42489D] text-[#3C3C3C] text-base w-full ${
+                    className={`bg-white p-[10px] md:p-4 rounded-2xl border-b border-b-[#42489D] text-[#3C3C3C] text-base w-full ${
                       errors?.name?.message ? "placeholder-[#F06881]" : ""
                     }`}
                     {...register("name", {
@@ -114,7 +115,7 @@ const PageRegister = () => {
                   <div className="flex-1 field">
                     <input
                       placeholder="Email"
-                      className={`bg-white p-4 rounded-2xl border-b border-b-[#42489D] text-[#3C3C3C] text-base w-full ${
+                      className={`bg-white p-[10px] md:p-4 rounded-2xl border-b border-b-[#42489D] text-[#3C3C3C] text-base w-full ${
                         errors?.email?.message ? "placeholder-[#F06881]" : ""
                       }`}
                       type="email"
@@ -142,7 +143,7 @@ const PageRegister = () => {
                       render={({ field }) => (
                         <IMaskInput
                           {...field}
-                          className={`bg-white p-4 rounded-2xl border-b border-b-[#42489D] text-[#3C3C3C] text-base w-full ${
+                          className={`bg-white p-[10px] md:p-4 rounded-2xl border-b border-b-[#42489D] text-[#3C3C3C] text-base w-full ${
                             errors?.phone?.message
                               ? "placeholder-[#F06881]"
                               : ""
@@ -159,10 +160,10 @@ const PageRegister = () => {
                   </div>
                 </div>
 
-                <div className="my-4">
+                <div className="mt-4">
                   <label
                     htmlFor="accept"
-                    className={`text-[#3C3C3C] text-base font-normal flex items-center gap-2 cursor-pointer select-none ${
+                    className={`text-[#3C3C3C] text-xs md:text-base font-normal flex items-center gap-2 cursor-pointer select-none ${
                       errors?.accept?.message ? "placeholder-[#F06881]" : ""
                     }`}
                   >
